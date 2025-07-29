@@ -8,6 +8,7 @@ import {
   service7_4,
   service8,
 } from "../../images/services";
+import { useLanguage } from "../../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,7 @@ const animateSection = (sectionClass, elements) => {
 };
 
 const FacadeWork = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     animateSection(".section1", [
       { selector: "h1", from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
@@ -84,13 +86,10 @@ const FacadeWork = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
             <h1 className="text-white clamp1 font-bold leading-tight mb-4">
-            Фасадные работы
+              {t("facadeWork.title")}
             </h1>
             <p className="w-full clamp4 leading-relaxed mb-6">
-              Компания «EXPRESS AUTOMATICA» проводит фасадные работы для
-              строящихся и эксплуатируемых зданий: жилых домов, коммерческих,
-              общественных, промышленных объектов. Мы работаем быстро,
-              используем качественные материалы, даем гарантию.
+              {t("facadeWork.description")}
             </p>
           </div>
           <div className="w-full">
@@ -104,44 +103,20 @@ const FacadeWork = () => {
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          Услуги:
+          {t("facadeWork.services.title")}
         </h1>
         <ul className="list-disc flex flex-col gap-4 mt-3">
-          <li className=" clamp4 leading-relaxed">
-            проектирование: разработка дизайн-проекта и эскиза, формирование
-            рабочей, технической документации по устройству фасадной системы для
-            строящегося здания или по ремонту, реконструкции фасада;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            проектирование: разработка дизайн-проекта и эскиза, формирование
-            рабочей, технической документации по устройству фасадной системы для
-            строящегося здания или по ремонту, реконструкции фасада;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            проектирование: разработка дизайн-проекта и эскиза, формирование
-            рабочей, технической документации по устройству фасадной системы для
-            строящегося здания или по ремонту, реконструкции фасада;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            наружная отделка: штукатурные, облицовочные работы, окраска,
-            установка декоративных элементов, водосточной системы и пр.
-          </li>
+          {t("facadeWork.services.list").map((item, index) => (
+            <li key={index} className="clamp4 leading-relaxed">
+              {item}
+            </li>
+          ))}
         </ul>
-        <p className="clamp4">
-          Компания «EXPRESS AUTOMATICA» работает с любыми фасадными системами.
-          Возможно устройство, реставрация, реконструкция фасада для средне-,
-          многоэтажных зданий с использованием технологий промышленного
-          альпинизма. Работы могут проводиться в любое время года. При
-          устройстве, ремонте, отделке фасадов мы соблюдаем требования
-          актуальных строительных и санитарных норм, стандарты пожарной
-          безопасности. Соблюдение требований проектной документации,
-          установленных сроков оказания услуг, гарантия их качества
-          прописываются в договоре.
-        </p>
+        <p className="clamp4">{t("facadeWork.services.conclusion")}</p>
       </section>
       <section className="section4 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          Наши работы:
+          {t("facadeWork.our_works.title")}
         </h1>
         <div className="img-container grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
           {dataWork.map((item, idx) => (
@@ -155,10 +130,9 @@ const FacadeWork = () => {
           ))}
         </div>
         <ul>
-          <li>-Отделка фасадов натуральным камнем</li>
-          <li>-Ремонт фасадов</li>
-          <li>-Монтаж сайдинга</li>
-          <li>-Вентилируемые фасады</li>
+          {t("facadeWork.our_works.list").map((item, index) => (
+            <li key={index}>-{item}</li>
+          ))}
         </ul>
       </section>
     </main>

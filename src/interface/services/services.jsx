@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { servicesData } from "../../components/data";
-import { home1 } from "../../images/home-img";
+import { useLanguage } from "../../context/LanguageContext";
+import { home1, home2, home3, home4, home5, home6 } from "../../images/home-img";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -9,6 +9,42 @@ import { NavLink } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
+  const { t } = useLanguage();
+
+  // Services data with translations
+  const servicesData = [
+    {
+      title: t('servicessubmenu.constructionHouse'),
+      link: "/construction-house",
+      img: home1,
+    },
+    {
+      title: t('servicessubmenu.reconstruction'),
+      link: "/reconst-build",
+      img: home2,
+    },
+    {
+      title: t('servicessubmenu.lowRise'),
+      link: "/low-rise",
+      img: home3,
+    },
+    {
+      title: t('servicessubmenu.prefabricated'),
+      link: "/prefabricated",
+      img: home4,
+    },
+    {
+      title: t('servicessubmenu.civilWorks'),
+      link: "/civil-works",
+      img: home5,
+    },
+    {
+      title: t('servicessubmenu.officeRenovation'),
+      link: "/office-renovation",
+      img: home6,
+    }
+  ];
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -80,7 +116,7 @@ const Services = () => {
     <main id="container" className="w-full flex flex-col gap-[50px] mb-4">
       <section className="section1 w-11/12 mx-auto max-w-[1440px] pt-4">
         <h1 className="text-primary font-bold clamp3 text-center">
-          Услуги строительной компании «EXPRESS AUTOMATICA»
+          {t('services.title')}
         </h1>
         <div className="services-container grid grid-cols-3 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4 mt-3">
           {servicesData.map((item, idx) => (
@@ -102,81 +138,57 @@ const Services = () => {
           ))}
         </div>
         <p className="clamp4 text-thin pt-4">
-          Строительная компания «EXPRESS AUTOMATICA» проектирует и строит жилые
-          дома, быстровозводимые здания, офисные, торговые, медицинские центры,
-          промышленные объекты, а также выполняет для них реконструкцию и
-          ремонт.
+          {t('services.description')}
         </p>
       </section>
       <section className="section2 w-11/12 mx-auto max-w-[1440px] pt-4">
-        <h1 className="text-primary font-bold clamp3">Качество услуг</h1>
+        <h1 className="text-primary font-bold clamp3">{t('services.quality.title')}</h1>
         <ul className="flex flex-col gap-4">
           <li>
-            <strong>Документы и сертификаты.</strong>.<br /> Работа компании
-            лицензирована. «EXPRESS AUTOMATICA» является членом строительной
-            СРО. Сотрудники имеют профильное образование, необходимые допуски.
-            Это гарантирует надежность, качество, соблюдение технологий
-            строительства.
+            <strong>{t('services.quality.documents.title')}</strong><br /> {t('services.quality.documents.desc')}
           </li>
           <li>
-            <strong>Обязательства по договору. </strong>.<br />
-            Мы работаем официально, закрепляем условия сотрудничества в
-            договоре, гарантируем их исполнение. Это касается и качества, и
-            соблюдения сроков, и цен на услуги.
+            <strong>{t('services.quality.obligations.title')}</strong><br />
+            {t('services.quality.obligations.desc')}
           </li>
           <li>
-            <strong>Гарантия.</strong>.<br />
-            Закреплена в договоре, действует на выполненные работы,
-            поставленные материалы, оборудование.
+            <strong>{t('services.quality.warranty.title')}</strong><br />
+            {t('services.quality.warranty.desc')}
           </li>
         </ul>
       </section>
       <section className="section3 w-11/12 mx-auto max-w-[1440px] pt-4">
         <h1 className="text-primary font-bold clamp3">
-          Виды услуг. Мы предлагаем:
+          {t('services.types.title')}
         </h1>
         <ul className="flex flex-col gap-4 list-disc ml-4">
           <li>
-            <strong>Проектирование.</strong>
-            <br /> Подготовка дизайн-проектов, эскизной, рабочей документации
-            для строительства, капитального ремонта, реконструкции, чистовой
-            отделки;
+            <strong>{t('services.types.design.title')}</strong>
+            <br /> {t('services.types.design.desc')}
           </li>
           <li>
-            <strong>Строительство.</strong>
-            <br /> «EXPRESS AUTOMATICA» строит загородные дома,
-            быстровозводимые, малоэтажные здания, административные,
-            общественные, коммерческие объекты. Мы выполняем любые
-            общестроительные работы: заливку фундаментов, возведение стен (по
-            каркасной, монолитной технологии, из бруса, кирпича, строительных
-            блоков), устройство перекрытий, кровли, отделку фасада;
+            <strong>{t('services.types.construction.title')}</strong>
+            <br /> {t('services.types.construction.desc')}
           </li>
           <li>
-            <strong>Реконструкцию.</strong>
-            <br /> Проводится для жилых многоквартирных домов, офисных,
-            общественных, промышленных зданий, медучреждений;
+            <strong>{t('services.types.reconstruction.title')}</strong>
+            <br /> {t('services.types.reconstruction.desc')}
           </li>
           <li>
-            <strong>Ремонт, отделку.</strong>
-            <br /> Выполняется для офисов, торговых, бизнес-центров, медицинских
-            учреждений, жилых комплексов, коттеджных поселков;
+            <strong>{t('services.types.repair.title')}</strong>
+            <br /> {t('services.types.repair.desc')}
           </li>
           <li>
-            <strong>Устройство инженерных систем:</strong>
-            <br /> электроснабжение, водоснабжение, вентиляция, канализация,
-            дренаж и другие;
+            <strong>{t('services.types.engineering.title')}</strong>
+            <br /> {t('services.types.engineering.desc')}
           </li>
           <li>
-            <strong>Благоустройство:</strong>
-            <br /> мы строим парковки, подъездные пути, создаем зоны отдыха,
-            выполняем озеленение, устанавливаем декоративное освещение.
+            <strong>{t('services.types.improvement.title')}</strong>
+            <br /> {t('services.types.improvement.desc')}
           </li>
         </ul>
         <p className="clamp4 text-thin pt-4">
-          Компания «EXPRESS AUTOMATICA» может работать как генеральный
-          подрядчик, обеспечивая все работы на объекте от проектирования до
-          чистовой отделки. Возможно сотрудничество на условиях субподряда,
-          обеспечение авторского надзора, выполнение отдельных работ.
+          {t('services.conclusion')}
         </p>
       </section>
     </main>

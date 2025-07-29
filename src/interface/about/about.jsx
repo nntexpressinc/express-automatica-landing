@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { home4 } from "../../images/home-img";
+import { useLanguage } from "../../context/LanguageContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./index.scss";
@@ -8,6 +9,8 @@ import { about1, about2 } from "../../images/about-img";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     gsap.fromTo(
       ".section1 h1",
@@ -125,14 +128,9 @@ const About = () => {
       <section className="section1 relative w-11/12 mx-auto max-w-[1440px] flex justify-center items-start flex-col min-h-[calc(100vh-88px)]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
-            <h1 className="text-thin clamp2">О Компании</h1>
+            <h1 className="text-thin clamp2">{t('about.title')}</h1>
             <p className="w-full">
-              Строительная компания «EXPRESS AUTOMATICA» работает с 2002 года.
-              Деятельность сертифицирована, «EXPRESS AUTOMATICA» — участник
-              профильной СРО, выступает как генеральный подрядчик и субподрядчик
-              при выполнении капитального строительства, реконструкции, ремонта,
-              работает с мало-, многоэтажными зданиями, коммерческими, жилыми,
-              общественными, промышленными объектами.
+              {t('about.description')}
             </p>
           </div>
           <div className="w-full">
@@ -141,46 +139,28 @@ const About = () => {
         </div>
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col">
-        <h1 className="text-thin clamp3">Наши преимущества</h1>
+        <h1 className="text-thin clamp3">{t('about.advantages.title')}</h1>
         <ul className="flex flex-col gap-4 mt-3">
           <li className="clamp4">
-            <strong>Гибкое сотрудничество. </strong>
-            <br /> Возможно выполнение полного объема работ для объекта или их
-            отдельных этапов: изысканий, проектирования, строительства, отделки
-            или монтажа. По результатам проектирования и разработки технической
-            документации возможен авторский надзор над проведением работ,
-            участие в их приемке.
+            <strong>{t('about.advantages.flexible.title')} </strong>
+            <br /> {t('about.advantages.flexible.desc')}
           </li>
           <li className="clamp4">
-            <strong>Соблюдение норм, </strong>
-            <br /> стандартов, законодательства. «EXPRESS AUTOMATICA»
-            гарантирует соблюдение общих строительных норм, специальных
-            стандартов, действующих для отдельных объектов (промышленных зданий,
-            медучреждений, жилых домов).
+            <strong>{t('about.advantages.standards.title')} </strong>
+            <br /> {t('about.advantages.standards.desc')}
           </li>
           <li className="clamp4">
-            <strong>Техническая оснащенность. </strong>
+            <strong>{t('about.advantages.technical.title')} </strong>
             <br />
-            При проектировании «EXPRESS AUTOMATICA» точно определяет требования
-            к используемым строительным, отделочным материалам, возможен их
-            подбор, организация снабжения для стройплощадки.
+            {t('about.advantages.technical.desc')}
           </li>
           <li className="clamp4">
-            <strong>Специалисты. </strong>
-            <br /> В штате компании — инженеры-проектировщики, специалисты по
-            электромонтажу, устройству инженерных систем, коммуникаций,
-            выполнению кровельных, фундаментных, монтажных и других работ.
-            Квалификация наших сотрудников гарантирует качественную реализацию
-            проекта.
+            <strong>{t('about.advantages.specialists.title')} </strong>
+            <br /> {t('about.advantages.specialists.desc')}
           </li>
           <li className="clamp4">
-            <strong>Организация строительства. </strong>
-            <br /> Выполняется с соблюдением норм безопасности, с гарантией
-            соблюдения согласованных сроков. Возможна разработка проекта
-            организации работ, контроль его выполнения. При реконструкции,
-            капитальном ремонте, отделочных или монтажных работах на
-            коммерческих, административных, общественных объектах возможно их
-            проведение без прекращения деятельности предприятия.
+            <strong>{t('about.advantages.organization.title')} </strong>
+            <br /> {t('about.advantages.organization.desc')}
           </li>
         </ul>
       </section>
@@ -194,40 +174,14 @@ const About = () => {
         </div>
         <div>
           <h1 className="font-bold clamp3">
-            Компания «EXPRESS AUTOMATICA» выполняет:
+            {t('about.services.title')}
           </h1>
           <ul className="flex flex-col gap-4">
-            <li>
-              - малоэтажное строительство с использованием разных технологий,
-              включая технологию строительства быстровозводимых зданий. Мы
-              строим склады, жилые дома, офисные, торговые центры,
-              производственные здания;
-            </li>
-            <li>- возведение многоэтажных домов;</li>
-            <li>
-              - выборочную или полную реконструкцию, капитальный, косметический
-              ремонт зданий, сооружений, отдельных помещений;
-            </li>
-            <li>
-              - проектирование (разработка дизайн-проекта, проектирование,
-              формирование технической документации, планов, чертежей, сметы,
-              плана организации строительства или реконструкции.);
-            </li>
-            <li>
-              - монтаж (электрооборудования, сантехнического оборудования,
-              элементов инженерных систем, производственного, медицинского и
-              другого оборудования);
-            </li>
-            <li>
-              - отдельные строительные работы, включая земляные, фасадные,
-              кровельные, отделочные, фундаментные, устройство перегородок,
-              стен, перекрытий и т.п.;
-            </li>
-            <li>
-              - благоустройство прилегающей территории: озеленение, устройство
-              подъездных путей, парковочных площадок, пешеходных дорожек,
-              создание игровых, детских, спортивных площадок, рекреационных зон.
-            </li>
+            {t('about.services.items').map((item, index) => (
+              <li key={index}>
+                - {item}
+              </li>
+            ))}
           </ul>
         </div>
       </section>

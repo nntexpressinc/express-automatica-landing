@@ -17,6 +17,7 @@ import {
   service6_8,
   service6_9,
 } from "../../images/services";
+import { useLanguage } from "../../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ const animateSection = (sectionClass, elements) => {
 };
 
 const OfficeRenovation = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     animateSection(".section1", [
       { selector: "h1", from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
@@ -106,13 +108,10 @@ const OfficeRenovation = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
             <h1 className="text-white clamp1 font-bold leading-tight mb-4">
-              Ремонт офисов
+              {t("officeRenovation.title")}
             </h1>
             <p className="w-full clamp4 leading-relaxed mb-6">
-              Компания «EXPRESS AUTOMATICA» выполняет ремонт офисов — для
-              обновления интерьера, изменения планировки, реконструкции
-              помещений. Мы используем качественные материалы, проверенные
-              технологии, организуем работы быстро.
+              {t("officeRenovation.description")}
             </p>
           </div>
           <div className="w-full">
@@ -126,92 +125,43 @@ const OfficeRenovation = () => {
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          Виды услуг:
+          {t("officeRenovation.services.title")}
         </h1>
         <ul className="flex flex-col gap-4 mt-3">
-          <li className="clamp4 leading-relaxed">
-            <strong>Проектирование.</strong> Мы разработаем дизайн-проект,
-            выполним эскизы, подготовим рабочую документацию, смету, план
-            организации работ
-          </li>
-          <li className="clamp4 leading-relaxed">
-            <strong>Косметический ремонт.</strong>При нормальном состоянии
-            коммуникаций, стен, окон, полов, других строительных конструкций
-            выполняется только обновление интерьера. Это быстро, экономично,
-            удобно, если вы въезжаете в новый офис и хотите изменить его «под
-            себя».
-          </li>
-          <li className="clamp4 leading-relaxed">
-            <strong>Капитальный ремонт.</strong>Обновление или замена
-            строительных конструкций, оборудования, элементов инженерных
-            систем и т.п. с последующей декоративной отделкой.
-          </li>
-          <li className="clamp4 leading-relaxed">
-            <strong>Реконструкция или перепланировка.</strong>Выполняется, если
-            меняются требования к использованию помещений, нужно изменить
-            расположение функциональных зон, площадь отдельных кабинетов и т.п.
-          </li>
+          {t("officeRenovation.services.list").map((item, index) => (
+            <li key={index} className="clamp4 leading-relaxed">
+              <strong>{item.title}</strong>
+              {item.desc}
+            </li>
+          ))}
         </ul>
-        <p className="clamp4">
-          При ремонте или реконструкции офисов строительная компания «EXPRESS
-          AUTOMATICA» может работать как генподрядчик, который проводит
-          проектирование, организует выполнение ремонта, снабжение объекта,
-          привлечение субподрядных организаций. У нас можно заказать выполнение
-          отдельных работ: проектирование с последующим авторским надзором,
-          монтаж инженерного оборудования, декоративную отделку.
-        </p>
+        <p className="clamp4">{t("officeRenovation.services.conclusion")}</p>
       </section>
       <section className="section3 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          Преимущества:
+          {t("officeRenovation.advantages.title")}
         </h1>
-        <p className="clamp4">
-          Работаем по договору. В нем прописаны гарантии, наши обязательства,
-          сроки выполнения работ или их отдельных этапов. Сотрудничество
-          прозрачно: при снабжении мы предоставляем первичные документы для
-          отчетности, возможна поэтапная приемка (регулярный контроль) ремонтных
-          работ.
-        </p>
+        <p className="clamp4">{t("officeRenovation.advantages.contract")}</p>
         <ul className="flex flex-col gap-4 mt-3">
-          <li className="clamp4 leading-relaxed">
-            <strong>Цены и сроки.</strong>. В среднем - не дольше, чем три
-            месяца. Точный срок согласовывается до подписания договора. Цены
-            прописаны в смете и в договоре, остаются фиксированными. Общая
-            стоимость определяется составом работ, используемыми технологиями,
-            материалами, состоянием помещений:
-            <ul className="pl-10 list-disc">
-              <li>
-                разработка дизайн-проекта — 900-1500 руб./м2, формирование
-                рабочей документации по готовым эскизам — 100-500 руб./м2;
-              </li>
-              <li>
-                внутренняя отделка — 3000-5000 руб./м2 (без учета материалов);
-              </li>
-              <li>
-                устройство коммуникаций — 3000-5000 руб./м2 (с учетом
-                материалов).
-              </li>
-            </ul>
-            Цены на отдельные виды услуг указаны в прайс-листе.
-          </li>
-          <li className="clamp4 leading-relaxed">
-            <strong>Результат соответствует проекту.</strong>Работы проводятся
-            по требованиям рабочей документации, с использованием указанных в
-            смете материалов.
-          </li>
-          <li className="clamp4 leading-relaxed">
-            <strong>Организация.</strong>Она отражена в проекте, где указаны
-            объемы, состав работ для каждого из этапов, сроки их проведения.
-            Компания «EXPRESS AUTOMATICA» использует собственную спецтехнику,
-            оборудование, привлекает специалистов с необходимыми допусками,
-            лицензиями. Возможна такая организация ремонта, при которой офис
-            продолжит работать даже во время него.
-          </li>
+          {t("officeRenovation.advantages.list").map((item, index) => (
+            <li key={index} className="clamp4 leading-relaxed">
+              <strong>{item.title}</strong>
+              {item.desc}
+              {item.sublist && (
+                <ul className="pl-10 list-disc">
+                  {item.sublist.map((subItem, subIndex) => (
+                    <li key={subIndex}>{subItem}</li>
+                  ))}
+                </ul>
+              )}
+              {item.conclusion && <p>{item.conclusion}</p>}
+            </li>
+          ))}
         </ul>
       </section>
       <section className="section4 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          Наши работы:
+          {t("officeRenovation.our_works.title")}
         </h1>
         <div className="img-container grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
           {dataWork.map((item, idx) => (
@@ -225,9 +175,9 @@ const OfficeRenovation = () => {
           ))}
         </div>
         <ul>
-          <li>-Дизайн-проекты</li>
-          <li>-Виды работ</li>
-          <li>-Этапы работ</li>
+          {t("officeRenovation.our_works.list").map((item, index) => (
+            <li key={index}>-{item}</li>
+          ))}
         </ul>
       </section>
     </main>

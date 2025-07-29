@@ -1,8 +1,8 @@
 import { logo } from "../../images";
-import { navLinkData } from "../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import { MdOutlinePhoneCallback } from "react-icons/md";
-import Language from "./language";
+import LanguageSwitcher from "../language-switcher/language-switcher";
 import "./navbar.scss";
 import gsap from "gsap";
 import { useEffect, useState, useRef } from "react";
@@ -11,9 +11,72 @@ import BurgerMenu from "../burger-menu/burger-menu";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSub, setIsOpenSub] = useState(false);
   const menuTimeline = useRef(null);
+
+  // Navigation data with translations
+  const navLinkData = [
+    {
+      title: t('nav.home'),
+      link: "/",
+    },
+    {
+      title: t('nav.about'),
+      link: "/about",
+    },
+    {
+      title: t('nav.services'),
+      link: "/services",
+      submenu: [
+        {
+          title: t('servicessubmenu.constructionHouse'),
+          link: "/construction-house",
+        },
+        {
+          title: t('servicessubmenu.reconstruction'),
+          link: "/reconst-build",
+        },
+        {
+          title: t('servicessubmenu.lowRise'),
+          link: "/low-rise",
+        },
+        {
+          title: t('servicessubmenu.prefabricated'),
+          link: "/prefabricated",
+        },
+        {
+          title: t('servicessubmenu.civilWorks'),
+          link: "/civil-works",
+        },
+        {
+          title: t('servicessubmenu.officeRenovation'),
+          link: "/office-renovation",
+        },
+        {
+          title: t('servicessubmenu.finishWork'),
+          link: "/finish-work",
+        },
+        {
+          title: t('servicessubmenu.facadeWork'),
+          link: "/facade-work",
+        },
+        {
+          title: t('servicessubmenu.waterproofing'),
+          link: "/waterproofing",
+        },
+        {
+          title: t('servicessubmenu.improvement'),
+          link: "/improvement",
+        },
+      ],
+    },
+    {
+      title: t('nav.contacts'),
+      link: "/contact",
+    },
+  ];
 
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
@@ -124,15 +187,15 @@ const Navbar = () => {
         </section>
         <section className="phone-container flex items-center justify-center gap-3">
           <button
-            onClick={() => window.open(`tel:+998 90 940 33 36`)}
+            onClick={() => window.open(`tel:${t('common.phone')}`)}
             className="max-sm:hidden phone flex items-center gap-3 rounded-3xl border border-primary p-2 cursor-pointer shadow-lg"
           >
             <MdOutlinePhoneCallback className="text-md font-bold text-primary" />
-            <h1 className="clamp5 font-bold text-primary">+998 90 940 33 36</h1>
+            <h1 className="clamp5 font-bold text-primary">{t('common.phone')}</h1>
           </button>
-          {/* <div className="lang z-30">
-            <Language />
-          </div> */}
+          <div className="lang z-30">
+            <LanguageSwitcher />
+          </div>
           <div className="md:hidden burger-menu relative">
             <BurgerMenu handleOpenMenu={handleOpenMenu} isOpen={isOpen} />
           </div>
@@ -203,7 +266,7 @@ const Navbar = () => {
             <div className="sm:hidden phone flex items-center gap-3 rounded-3xl border border-primary p-2 cursor-pointer shadow-lg mx-2">
               <MdOutlinePhoneCallback className="text-xl font-bold text-primary" />
               <h1 className="text-xl font-bold text-primary">
-                +998 93 515 80 84
+                {t('common.phone')}
               </h1>
             </div>
           </div>

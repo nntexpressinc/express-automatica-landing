@@ -1,6 +1,6 @@
 import React from "react";
 import { logo } from "../../images";
-import { navLinkData } from "../data";
+import { useLanguage } from "../../context/LanguageContext";
 import { NavLink } from "react-router-dom";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -9,6 +9,28 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
+  // Navigation data with translations for footer
+  const navLinkData = [
+    {
+      title: t('nav.home'),
+      link: "/",
+    },
+    {
+      title: t('nav.about'),
+      link: "/about",
+    },
+    {
+      title: t('nav.services'),
+      link: "/services",
+    },
+    {
+      title: t('nav.contacts'),
+      link: "/contact",
+    },
+  ];
+
   useGSAP(() => {
     const footerTl1 = gsap.timeline({
       delay: 0.3,
@@ -94,23 +116,23 @@ const Footer = () => {
             <div className="link flex items-center justify-start gap-2">
               <FaMapLocationDot className="text-thin text-[30px]" />
               <h1 className="clamp4 text-thin">
-                г. Карши, Г. Гулом МСГ, ул. Насаф, д. 6/4
+                {t('footer.address')}
               </h1>
             </div>
             <div className="link flex items-center justify-start gap-2">
               <FaPhoneAlt className="text-thin text-[24px]" />
-              <h1 className="clamp4 text-thin">+998 (90) 940 33 36</h1>
+              <h1 className="clamp4 text-thin">{t('common.phone')}</h1>
             </div>
             <div className="link flex items-center justify-start gap-2">
               <TfiEmail className="text-thin text-[24px]" />
-              <h1 className="clamp4 text-thin"> info@express-automatica.com</h1>
+              <h1 className="clamp4 text-thin">{t('footer.email')}</h1>
             </div>
           </div>
         </div>
         <div className="bg-thin w-full h-[1px]"></div>
         <div className="footer-bottom flex flex-col gap-2">
-          <h1>©2005-2024 </h1>
-          <h1>Строительство, ремонт и реконструкция зданий, отделка офисов.</h1>
+          <h1>{t('footer.copyright')}</h1>
+          <h1>{t('footer.description')}</h1>
         </div>
       </main>
     </footer>

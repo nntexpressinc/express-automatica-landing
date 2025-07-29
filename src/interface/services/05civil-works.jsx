@@ -3,6 +3,7 @@ import { home1, home4 } from "../../images/home-img";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { service5 } from "../../images/services";
+import { useLanguage } from "../../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,9 +28,10 @@ const animateSection = (sectionClass, elements) => {
 };
 
 const CivilWorks = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     animateSection(".section1", [
-      { selector: ["h1","p"], from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
+      { selector: ["h1", "p"], from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
       {
         selector: "img",
         from: { scale: 0.8 },
@@ -43,7 +45,6 @@ const CivilWorks = () => {
       { selector: "h1", from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
     ]);
     window.scrollTo(0, 0);
-
   }, []);
   return (
     <main className="w-full flex flex-col gap-[100px] relative text-white pb-[50px]">
@@ -52,18 +53,10 @@ const CivilWorks = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
             <h1 className="text-white clamp1 font-bold leading-tight mb-4">
-              Общестроительные работы
+              {t("civilWorks.title")}
             </h1>
             <p className="w-full clamp4 leading-relaxed mb-6">
-              Компания «EXPRESS AUTOMATICA» выполняет общестроительные работы
-              для объектов разных типов. Мы работаем с малоэтажными, жилыми
-              домами, общественными, офисными и торговыми зданиями,
-              промышленными и производственными объектами. Строительная компания
-              «EXPRESS AUTOMATICA» выполняет полный комплекс работ, включая
-              проектирование, устройство фундамента и перекрытий, возведение
-              перегородок, отделку, земляные работы. Если требуется, мы
-              обеспечим поставки строительных материалов для объекта по оптовой
-              цене.
+              {t("civilWorks.description")}
             </p>
           </div>
           <div className="w-full h-full">
@@ -77,47 +70,16 @@ const CivilWorks = () => {
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <h1 className="text-white clamp3 font-bold leading-tight mb-4">
-          У нас вы сможете заказать общестроительные работы:
+          {t("civilWorks.services.title")}
         </h1>
         <ul className="flex flex-col gap-4 mt-3 list-disc pl-5">
-          <li className="clamp4 leading-relaxed">
-            земляные работы: укладку и укрепление грунта, обустройство траншей
-            для коммуникаций, котлованов для фундаментов;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            обустройство ленточных фундаментов, монолитных плит и пр.;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            строительство стен из кирпича, блоков, других материалов;
-          </li>
-          <li className="clamp4 leading-relaxed">устройство перекрытий;</li>
-          <li className="clamp4 leading-relaxed">
-            обустройство и ремонт полов (армирование, самовыравнивающиеся или
-            «сухие» полы и т.п.);
-          </li>
-          <li className="clamp4 leading-relaxed">
-            гидроизоляцию фундаментов, пола, стен проникающими составами,
-            мастиками, рулонными материалами;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            штукатурные работы (стены, потолки, проемы и откосы);
-          </li>
-          <li className="clamp4 leading-relaxed">
-            создание новых проемов в стенах, усиление существующих проемов
-            металлическим профилем;
-          </li>
-          <li className="clamp4 leading-relaxed">
-            обустройство перегородок из гипсокартона или облицовку им стен,
-            шумоизоляцию, утепление.
-          </li>
+          {t("civilWorks.services.list").map((item, index) => (
+            <li key={index} className="clamp4 leading-relaxed">
+              {item}
+            </li>
+          ))}
         </ul>
-        <p className="clamp4">
-          Деятельность компании «EXPRESS AUTOMATICA» лицензирована.
-          Общестроительные работы выполняются в соответствии с действующими СНиП
-          и другими стандартами. Компания может выступать как генеральный
-          подрядчик, выполняя полный комплекс строительных работ, или как
-          субподрядчик, обеспечивая решение конкретных задач.
-        </p>
+        <p className="clamp4">{t("civilWorks.conclusion")}</p>
       </section>
     </main>
   );

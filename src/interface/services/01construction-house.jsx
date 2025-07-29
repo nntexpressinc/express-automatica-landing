@@ -4,9 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./index.scss";
 import { service1 } from "../../images/services";
+import { useLanguage } from "../../context/LanguageContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const ConstructionHouse = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     gsap.fromTo(
       [".section1 h1", ".section1 p"],
@@ -141,45 +143,21 @@ const ConstructionHouse = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
             <h1 className="text-white clamp2">
-              Строительство домов и коттеджей
+              {t("constructionHouse.title")}
             </h1>
             <p className="w-full">
-              Мы выполняем проектирование, подготовку участков к застройке,
-              подвод коммуникаций, строительные, отделочные работы. На
-              материалы, оборудование, услуги действует гарантия.
+              {t("constructionHouse.description")}
             </p>
-            <h1 className="text-white clamp2">Преимущества</h1>
+            <h1 className="text-white clamp2">{t("constructionHouse.advantages")}</h1>
             <p className="w-full">
-              Мы выполняем проектирование, подготовку участков к застройке,
-              подвод коммуникаций, строительные, отделочные работы. На
-              материалы, оборудование, услуги действует гарантия.
+              {t("constructionHouse.advantages_desc")}
             </p>
             <ul className="flex flex-col gap-4 mt-3">
-              <li className="clamp4">
-                <strong>Комплексный подряд.  </strong> Вы можете заказать
-                выполнение всех работ в нашей компании: от проектирования
-                до электромонтажа в готовом здании. «EXPRESS AUTOMATICA»
-                располагает парком спецтехники, штатом специалистов. Возможно
-                сотрудничество на условиях субподряда.
-              </li>
-              <li className="clamp4">
-                <strong>Качество. </strong> Мы учитываем характеристики участка,
-                соблюдаем СНиП, другие нормы, используем надежные строительные
-                технологии.
-              </li>
-              <li className="clamp4">
-                <strong>Сотрудничество. </strong> Компания «EXPRESS AUTOMATICA»
-                подберет технологии строительства, стройматериалы, обеспечит их
-                поставку. Запланированные работы выполняются без нарушения
-                графика. Грамотная организация строительства позволяет возводить
-                коттеджи и таунхаусы всего за несколько месяцев.
-              </li>
-              <li className="clamp4">
-                <strong>Сопутствующие услуги. </strong> Мы выполняем изыскания,
-                топосъемку, подготовку территории к застройке, демонтаж старых
-                зданий. В «EXPRESS AUTOMATICA» можно заказать благоустройство
-                участка, подвод коммуникаций, электромонтаж.
-              </li>
+              {t("constructionHouse.list").map((item, index) => (
+                <li key={index} className="clamp4">
+                  <strong>{item.title}</strong> {item.desc}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="w-full h-full">
@@ -193,42 +171,14 @@ const ConstructionHouse = () => {
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col">
         <h1 className="text-white clamp3">
-          Этапы возведения частного жилого дома
+          {t("constructionHouse.stages.title")}
         </h1>
         <ul className="flex flex-col gap-4 mt-3">
-          <li className="clamp4">
-            <strong>Проектирование. </strong> Выполняется после изысканий,
-            оценки характеристик участка, разработки, согласования эскизного
-            проекта. Предполагает разработку детальной технической информации с
-            описанием строительных технологий, используемых материалов, порядка
-            проведения работ. Готовая документация содержит смету с точными
-            ценами на материалы, услуги, рассчитанной итоговой стоимостью
-            проекта.
-          </li>
-          <li className="clamp4">
-            <strong>Подготовка. </strong>Расчистка, профилирование, выравнивание
-            территории, обустройство дренажа, демонтаж старых зданий, строений и
-            т.п.
-          </li>
-          <li className="clamp4">
-            <strong>Возведение здания.  </strong>Подведение коммуникаций,
-            обустройство фундамента, стен, перекрытий, кровли, установка дверей,
-            окон.
-          </li>
-          <li className="clamp4">
-            <strong>Наружная отделка. </strong> Утепление, отделка фасада по
-            выбранной заказчиком технологии.
-          </li>
-          <li className="clamp4">
-            <strong>Внутренняя отделка. </strong> Обустройство чернового,
-            чистового пола, отделка стен, потолков, установка лестниц,
-            электромонтаж и т.п.
-          </li>
-          <li className="clamp4">
-            <strong>Благоустройство. </strong> Установка ограждений,
-            обустройство дорожек, площадок, газонов, озеленение, монтаж уличного
-            освещения.
-          </li>
+        {t("constructionHouse.stages.list").map((item, index) => (
+            <li key={index} className="clamp4">
+              <strong>{item.title}</strong> {item.desc}
+            </li>
+          ))}
         </ul>
       </section>
     </main>

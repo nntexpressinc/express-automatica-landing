@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { service7 } from "../../images/services";
+import { useLanguage } from "../../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +27,7 @@ const animateSection = (sectionClass, elements) => {
 };
 
 const FinishWork = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     animateSection(".section1", [
       { selector: "h1", from: { y: -50 }, to: { y: 0 }, stagger: 0.3 },
@@ -76,21 +78,10 @@ const FinishWork = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="flex flex-col items-start justify-center h-full">
             <h1 className="text-white clamp1 font-bold leading-tight mb-4">
-              Дизайн интерьера
+              {t("finishWork.title")}
             </h1>
             <p className="w-full clamp4 leading-relaxed mb-6">
-              Интерьерный дизайн создают, чтобы оформить помещение, сделать его
-              красивым, удобным. Его разработка — один из этапов проектирования
-              перед ремонтом, реконструкцией или отделкой нового объекта. При
-              этом решают задачи, которые связаны с назначением, планировкой
-              помещений, их инженерным оснащением, зонированием, визуальными
-              решениями, расстановкой мебели, соблюдением особенностей
-              выбранного стиля. Требования к дизайну будут разными для квартир и
-              жилых домов, офисов, ресторанов или магазинов: в одних случаях
-              важен уют, а в других — удобство, яркость, запоминаемость.
-              Полезная информация от сотрудников строительной компании «EXPRESS
-              AUTOMATICA» о дизайне интерьера и отдельных аспектах его создания
-              — в этом разделе.
+              {t("finishWork.description")}
             </p>
           </div>
           <div className="w-full">
@@ -104,30 +95,11 @@ const FinishWork = () => {
       </section>
       <section className="section2 relative w-11/12 mx-auto max-w-[1440px] flex flex-col gap-3">
         <ul className="list-disc flex flex-col gap-4 mt-3">
-          <li className="clamp4 leading-relaxed">Шкаф-купе</li>
-          <li className="clamp4 leading-relaxed">
-            Отделка кабинета руководителя
-          </li>
-          <li className="clamp4 leading-relaxed">
-            Отделочные материалы для офиса
-          </li>
-          <li className="clamp4 leading-relaxed">
-            Расстановка мебели и планировка в офисном интерьере
-          </li>
-          <li className="clamp4 leading-relaxed">
-            Дизайн интерьера для банков
-          </li>
-          <li className="clamp4 leading-relaxed">
-            Фитодизайн в офисном интерьере
-          </li>
-          <li className="clamp4 leading-relaxed">
-            Фирменный стиль компании как часть дизайна офиса{" "}
-          </li>
-          <li className="clamp4 leading-relaxed">Дизайн офисного интерьера</li>
-          <li className="clamp4 leading-relaxed">Открытая планировка офиса</li>
-          <li className="clamp4 leading-relaxed">
-            Зонирование пространства офиса
-          </li>
+          {t("finishWork.list").map((item, index) => (
+            <li key={index} className="clamp4 leading-relaxed">
+              {item}
+            </li>
+          ))}
         </ul>
       </section>
     </main>

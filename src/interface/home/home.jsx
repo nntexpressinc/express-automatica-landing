@@ -1,20 +1,66 @@
 import React, { useEffect, useRef, useState } from "react";
 import { logo } from "../../images";
-import { disignData, disignData1, home1Data } from "../../components/data";
+import { useLanguage } from "../../context/LanguageContext";
 import "./index.scss";
 import { homeBackground } from "../../videos";
-import { home4, home5, home6 } from "../../images/home-img";
+import { home1, home2, home3, home4, home5, home6, disign, disign1, disign2, disign3, disign4 } from "../../images/home-img";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const { t } = useLanguage();
   const container = useRef(null);
   const section = useRef(null);
   const section1 = useRef(null);
   const section2 = useRef(null);
   const section3 = useRef(null);
+
+  // Home services data with translations
+  const home1Data = [
+    {
+      title: t('home.services.constructionServices'),
+      img: home3,
+    },
+    {
+      title: t('home.services.design'),
+      img: home2,
+    },
+    {
+      title: t('home.services.engineering'),
+      img: home1,
+    },
+  ];
+
+  // Features data with translations
+  const disignData = [
+    {
+      title: t('home.features.organization.title'),
+      desc: t('home.features.organization.desc'),
+      img: disign,
+    },
+    {
+      title: t('home.features.technology.title'),
+      desc: t('home.features.technology.desc'),
+      img: disign1,
+    },
+    {
+      title: t('home.features.reliability.title'),
+      desc: t('home.features.reliability.desc'),
+      img: disign2,
+    },
+    {
+      title: t('home.features.technicalBase.title'),
+      desc: t('home.features.technicalBase.desc'),
+      img: disign3,
+    },
+    {
+      title: t('home.features.goals.title'),
+      desc: t('home.features.goals.desc'),
+      img: disign4,
+    },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -182,14 +228,10 @@ const Home = () => {
           <main className="flex justify-center items-start flex-col  gap-3 w-11/12 mx-auto h-[calc(100vh-88px)] z-2 relative">
             <div className="text-container w-full lg:w-1/2 flex flex-col justify-center items-center gap-3 text-start">
               <h1 className="text-animate clamp2 text-white font-bold head-h1">
-                СТРОИТЕЛЬНАЯ КОМПАНИЯ «EXPRESS AUTOMATICA» - это Надежность,
-                Качество, Технологии.
+                {t('home.hero.title')}
               </h1>
               <p className="clamp4 text-white head-h1 text-animate">
-                Компания «EXPRESS AUTOMATICA» проектирует и строит жилые дома,
-                коммерческие здания, промышленные объекты, выполняет для них
-                реконструкцию, ремонт, отделку. Мы работаем быстро, контролируем
-                качество, даем гарантию на все услуги.
+                {t('home.hero.description')}
               </p>
             </div>
           </main>
@@ -221,29 +263,22 @@ const Home = () => {
         </section>
         <section className="section2-container relative w-11/12 max-w-[1440px] mx-auto flex flex-col gap-3">
           <h1 className="text-center w-full clamp3 text-primary rounded-[12px] font-[500]">
-            СТРОИТЕЛЬНАЯ КОМПАНИЯ
-            <br /> «EXPRESS AUTOMATICA»
+            {t('home.company.title')}
           </h1>
           <div className="flex max-lg:flex-col-reverse justify-between items-center gap-3 ">
             <div className="flex justify-start items-start flex-col gap-3">
               <ul className="text-thin flex flex-col gap-3">
                 <li>
-                  <strong>ПРОЕКТИРОВАНИЕ:</strong> эскизные, рабочие,
-                  дизайн-проекты, проекты для строительства, реконструкции,
-                  капитального ремонта, инженерных систем, их согласование.
+                  <strong>{t('home.company.planning').split(':')[0]}:</strong> {t('home.company.planning').split(':')[1]}
                 </li>
                 <li>
-                  <strong>СТРОИТЕЛЬСТВО:</strong> промышленные, коммерческие
-                  быстровозводимые здания, жилые дома, малоэтажные здания;
+                  <strong>{t('home.company.construction').split(':')[0]}:</strong> {t('home.company.construction').split(':')[1]}
                 </li>
                 <li>
-                  <strong>РЕКОНСТРУКЦИЯ:</strong> жилых, коммерческих,
-                  общественных зданий, медицинских учреждений, промышленных
-                  офисных, торговых комплексов;
+                  <strong>{t('home.company.reconstruction').split(':')[0]}:</strong> {t('home.company.reconstruction').split(':')[1]}
                 </li>
                 <li>
-                  <strong>РЕМОНТ, ОТДЕЛКА:</strong> наружная, внутренняя отделка
-                  для жилых комплексов, бизнес-центров, офисов.
+                  <strong>{t('home.company.repair').split(':')[0]}:</strong> {t('home.company.repair').split(':')[1]}
                 </li>
               </ul>
             </div>
@@ -258,8 +293,7 @@ const Home = () => {
         </section>
         <section className="section3-container relative w-11/12 max-w-[1440px] mx-auto flex flex-col gap-[32px]">
           <h1 className="main-text text-center w-full clamp3 text-primary rounded-[12px] font-[500]">
-            Мы работаем на условиях генерального подряда,
-            <br /> субподряда, авторского надзора.
+            {t('home.workConditions')}
           </h1>
           <>
             <div className="disign-container grid grid-cols-5 max-lg:grid-cols-3 max-xl:grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
@@ -300,7 +334,7 @@ const Home = () => {
                       className="mt-4 px-4 py-2 bg-primary text-white rounded-md"
                       onClick={handleClose}
                     >
-                      Закрыть
+                      {t('common.close')}
                     </button>
                   </div>
                 </div>
@@ -317,17 +351,12 @@ const Home = () => {
                 />
               </div>
               <h1 className="text-primary font-bold clamp3">
-                Строительство и ремонт
+                {t('home.construction.title')}
               </h1>
               <ul className="text-thin clamp4 ">
-                <li>Ремонт офисов </li>
-                <li>Строительство загородных домов </li>
-                <li>Малоэтажное строительство </li>
-                <li>Ремонт и реконструкция зданий </li>
-                <li>Общестроительные работы </li>
-                <li>Отделочные работы </li>
-                <li>Фасадные, кровельные работы </li>
-                <li>Гидроизоляционный работы </li>
+                {t('home.construction.items').map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
               </ul>
             </div>
             <div className="card bg-secondaryBg w-full flex flex-col justify-start items-start gap-4  p-4 rounded-md">
@@ -340,14 +369,12 @@ const Home = () => {
               </div>
               <div className="w-full">
                 <h1 className="text-primary font-bold clamp3">
-                  Монтаж инженерных систем
+                  {t('home.engineering.title')}
                 </h1>
                 <ul className="text-thin clamp4 ">
-                  <li>Электромонтаж </li>
-                  <li>Вентиляция </li>
-                  <li>Холодоснабжение </li>
-                  <li>Системы отопления </li>
-                  <li>Сантехнические работы </li>
+                  {t('home.engineering.items').map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
             </div>

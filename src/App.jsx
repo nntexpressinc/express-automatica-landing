@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/navbar/navbar";
 import Home from "./interface/home/home";
 import Footer from "./components/footer/footer";
@@ -19,30 +20,32 @@ import Improvement from "./interface/services/10improvement";
 
 function App() {
   return (
-    <main>
-      <Navbar />
-      <div className="overflow-x-hidden app mt-[88px] min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/construction-house" element={<ConstructionHouse />} />
-          <Route path="/reconst-build" element={<ReconstBuild />} />
-          <Route path="/low-rise" element={<LowRise />} />
-          <Route path="/prefabricated" element={<Prefabricated />} />
-          <Route path="/civil-works" element={<CivilWorks />} />
-          <Route path="/office-renovation" element={<OfficeRenovation />} />
-          <Route path="/finish-work" element={<FinishWork />} />
-          <Route path="/facade-work" element={<FacadeWork />} />
-          <Route path="/waterproofing" element={<Waterproofing />} />
-          <Route path="/improvement" element={<Improvement />} />
-          <Route path="*" element={<h1>404 Not Found</h1>} />
-        </Routes>
-      </div>
-      <Footer />
-      <TopButton />
-    </main>
+    <LanguageProvider>
+      <main>
+        <Navbar />
+        <div className="overflow-x-hidden app mt-[88px] min-h-screen">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/construction-house" element={<ConstructionHouse />} />
+            <Route path="/reconst-build" element={<ReconstBuild />} />
+            <Route path="/low-rise" element={<LowRise />} />
+            <Route path="/prefabricated" element={<Prefabricated />} />
+            <Route path="/civil-works" element={<CivilWorks />} />
+            <Route path="/office-renovation" element={<OfficeRenovation />} />
+            <Route path="/finish-work" element={<FinishWork />} />
+            <Route path="/facade-work" element={<FacadeWork />} />
+            <Route path="/waterproofing" element={<Waterproofing />} />
+            <Route path="/improvement" element={<Improvement />} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
+          </Routes>
+        </div>
+        <Footer />
+        <TopButton />
+      </main>
+    </LanguageProvider>
   );
 }
 

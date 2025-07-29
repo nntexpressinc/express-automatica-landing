@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { contactImage } from "../../components/data";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -56,17 +58,23 @@ const Contact = () => {
       <section className="w-11/12 section1 max-w-[1440px] mx-auto pt-[20px]">
         <div className="flex flex-col gap-3">
           <h1 className="clamp1 text-thin font-bold text-center">
-            Контактная информация
+            {t("contact.title")}
           </h1>
           <button
-            onClick={() => window.open(`tel:+998 93 515 80 84`)}
+            onClick={() => window.open(`tel:+998909403336`)}
             className="clamp1 text-primary font-bold text-center"
           >
             +998 (90) 940 33 36
           </button>
-          <p className="clamp3 text-thin text-center">
-            г. Карши, Г. Гулом МСГ, ул. Насаф, д. 6/4
-          </p>
+          <button
+            onClick={() =>
+              (window.location.href = `mailto:info@express-automatica.com`)
+            }
+            className="clamp2 text-thin font-bold text-center"
+          >
+            info@express-automatica.com
+          </button>
+          <p className="clamp3 text-thin text-center">{t("contact.address")}</p>
         </div>
       </section>
       <section className="w-11/12 section2 max-w-[1440px] mx-auto grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
