@@ -93,7 +93,7 @@ export const translations = {
     // Footer
     footer: {
       address: "г. Карши, Г. Гулом МСГ, ул. Насаф, д. 6/4",
-      email: "info@express-automatica.com",
+      email: "info@express-automatica.uz",
       copyright: "©2005-2024",
       description: "Строительство, ремонт и реконструкция зданий, отделка офисов."
     },
@@ -657,7 +657,7 @@ export const translations = {
     // Footer
     footer: {
       address: "Qarshi sh., G. Gulom MSG, Nasaf ko'chasi, 6/4",
-      email: "info@express-automatica.com",
+      email: "info@express-automatica.uz",
       copyright: "©2005-2024",
       description: "Binolar qurish, ta'mirlash va rekonstruksiyasi, ofislarni pardozlash."
     },
@@ -1221,7 +1221,7 @@ export const translations = {
     // Footer
     footer: {
       address: "Karshi city, G. Gulom MSG, Nasaf street, 6/4",
-      email: "info@express-automatica.com",
+      email: "info@express-automatica.uz",
       copyright: "©2005-2024",
       description: "Construction, repair and reconstruction of buildings, office finishing."
     },

@@ -68,11 +68,11 @@ const Contact = () => {
           </button>
           <button
             onClick={() =>
-              (window.location.href = `mailto:info@express-automatica.com`)
+              (window.location.href = `mailto:info@express-automatica.uz`)
             }
             className="clamp2 text-thin font-bold text-center"
           >
-            info@express-automatica.com
+            info@express-automatica.uz
           </button>
           <p className="clamp3 text-thin text-center">{t("contact.address")}</p>
         </div>

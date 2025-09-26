@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://express-automatica.uz/sitemap.xml
+
+# Block access to source maps in production
+Disallow: *.map
